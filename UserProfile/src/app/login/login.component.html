@@ -1,0 +1,21 @@
+<br>
+<br>
+<h3 align="center">Please enter the user_name</h3>
+
+    <h5 align="center">
+
+    
+        <mat-form-field>
+            <input matInput #query type='text' (ngModel)='query' name='search' required>
+        </mat-form-field>
+        
+
+        <br>
+        <br>
+
+        <button mat-raised-button (click)="login(query.value)"  color="success">Login</button>
+
+        <br>
+        <br>
+
+</h5> 

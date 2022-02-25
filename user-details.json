@@ -1,0 +1,40 @@
+{
+  "Profiles": [
+    {
+      "username": "mohit-soni",
+      "name": "Mohit",
+      "email": "mohit_soni87@ymail.com",
+      "bio": "I am going into a new project!!"
+    },
+    {
+      "username": "varun",
+      "name": "Varun Singh",
+      "email": "varun@ymail.com",
+      "bio": "Hi! My name is Varun, I like cycling"
+    },
+    {
+      "username": "Payal_98",
+      "name": "Payal Sinha",
+      "email": "payal@ibm.com",
+      "bio": "Hey there! My name is Payal, I love trekking"
+    },
+    {
+      "username": "RockingYash123",
+      "name": "Yash Jain",
+      "email": "yashs@ymail.com",
+      "bio": "I love computers"
+    },
+    {
+      "name": "Rocket Singh",
+      "email": "rocketsingh@gmai.com",
+      "username": "RocketSingh",
+      "bio": "I am a foodie!!"
+    },
+    {
+      "name": "Tina",
+      "email": "Tina@t.com",
+      "username": "Tina",
+      "bio": "132"
+    }
+  ]
+}

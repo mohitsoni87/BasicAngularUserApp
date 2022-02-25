@@ -1,0 +1,32 @@
+<!doctype html><html lang="en">
+<head>  
+  <meta charset="utf-8">  
+  <title>Assignment</title>  <base href="/">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="icon" type="image/x-icon" href="favicon.ico">  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  
+  </head>
+
+
+  <mat-toolbar ng-app="myApp" ng-controller="myCtrl" color=primary>
+
+    <button mat-icon-button (click)="redirectToHome()">
+    <mat-icon>account_circle</mat-icon>&nbsp;
+    <span>User Profile!</span>
+    </button>
+
+    <div *ngIf="isUserLoggedIn == false">
+      <a class="buttons" [routerLink]="['login']"><button mat-raised-button >Login</button></a>
+    &nbsp;
+      <a class="buttons" [routerLink]="['/register']"><button mat-raised-button >Register</button></a>&nbsp;  
+  </div>
+  
+  <div *ngIf="isUserLoggedIn == true">
+    <a class="buttons" [routerLink]="['/logout']"><button mat-raised-button >Logout</button></a>&nbsp;  </div>
+  </mat-toolbar>
+
+  
+<router-outlet></router-outlet>
+
+</html>

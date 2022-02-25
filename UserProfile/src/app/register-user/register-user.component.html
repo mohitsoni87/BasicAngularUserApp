@@ -1,0 +1,72 @@
+
+<div class="container">
+    <br>
+    <h3 align="center">Sign Up</h3>
+
+<ng-container>
+<div class="card-body">
+
+      
+    <form class="formVar" (ngSubmit)="registerUser()" [formGroup]="userForm">
+        
+        <div class="form-group row mb-2">
+            <div>
+                <mat-form-field>
+                    <input matInput class="form-control" id="nameId" type="text" placeholder="Name (required)" formControlName="name" 
+                    [ngClass]="{ 'is-invalid': submitted && formControl['name'].errors }"/>
+                </mat-form-field>
+                <div *ngIf="submitted && formControl['name'].errors" >
+                    <div *ngIf="formControl['name'].errors" class="text-danger">Minimum length for the name is 3 characters</div>
+                </div>      
+            </div>
+            <br>
+        </div>
+        
+        <div class="form-group row mb-2">
+            <div >
+                <mat-form-field>
+                    <input matInput class="form-control" id="productCodeId" type="text" placeholder="UserName (required)" formControlName="username"/>
+                </mat-form-field>
+                <div *ngIf="submitted && formControl['username'].errors" >
+                    <div *ngIf="formControl['username'].errors" class="text-danger">User name is a mandatory field</div>
+                </div>     
+            </div>
+            <br>
+
+        </div>
+
+        <div class="form-group row mb-2">
+        
+            <div >
+                <mat-form-field>
+                    <input matInput class="form-control" id="emailId" type="text" placeholder="Email (required)" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && formControl['email'].errors}"/>
+                </mat-form-field>
+                <div *ngIf="submitted && formControl['email'].errors" class="text-danger">Email must be a valid email address</div>
+            </div>
+                    <br>
+        </div>
+     
+     
+        <div class="form-group row mb-2">
+            <div>
+            <mat-form-field class = "tp-full-width">
+                <textarea matInput placeholder = "Enter your Bio" formControlName="bio"></textarea>
+             </mat-form-field>
+            </div>
+            <br>
+        </div>
+
+  
+        <div class="form-group row mb-2">
+            <div>
+                <button mat-raised-button color="success" style="width:80px;" type="submit">Save</button>
+                &nbsp;&nbsp;&nbsp;<button mat-raised-button (click)="onCancel()"type="button" title="Cancel your edits" > Cancel </button>
+            </div>
+        </div>
+    </form>
+    </div>
+    
+</ng-container>
+</div>
+
