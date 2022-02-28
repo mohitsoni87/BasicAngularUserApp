@@ -1,20 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileViewComponent } from './profile-view/profile-view.component';
-import { UserService } from './services/user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
-export class AppComponent {
-  title = 'UserProfile';
+export class HomePageComponent implements OnInit {
 
   isUserLoggedIn: boolean = false;
+  homePage: boolean = true;
 
   constructor(private router: Router,
     private userStatus: UserService) {
+      this.homePage = true;
       
      }
 

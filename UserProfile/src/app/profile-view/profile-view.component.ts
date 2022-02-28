@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInterface } from '../model/UserInterface';
-import { JsonService } from '../services/json.service';
+import { UserService } from '../services/user.service';
 
 
 
@@ -16,40 +16,29 @@ export class ProfileViewComponent implements OnInit {
   @ViewChild('table') table: MatTable<Element>;
 
   //Table's column headers
-  displayedColumns: string[] = ['name', 'username', 'email','bio'];
+  displayedColumns: string[] = ['name', 'email','bio'];
 
   displayResult = false;
   userProfile: UserInterface[]= [];
   homePage: boolean = true;
   
-  constructor(private fetchUser: JsonService,
+  constructor(private fetchUser: UserService,
     private route: ActivatedRoute,
     private router: Router) { }
 
     ngOnInit(): void {
-      
-    this.route.paramMap.subscribe(params=>{
-      const username = params.get('username');   // + for to convert the string into integer 
-      if(username != null){
-        this.loadUserDetails(username);
-        this.homePage = false;
-      }else{
-        this.homePage = true;
-      }
-      
-
-  })   
+      this.loadUserDetails();
+      this.homePage = false;
+  
     }
 
-    loadUserDetails=(username: string)=>{
-      this.fetchUser.findUser(username).subscribe({
+    loadUserDetails=()=>{
+      this.fetchUser.findUser().subscribe({
         next:(userObect: UserInterface)=>{
           if(userObect != null){
             this.displayResult = true;
             this.userProfile = [userObect];
             
-            //to refresh rows on any event change
-            this.table.renderRows();
           }
         },
         error:err=>{

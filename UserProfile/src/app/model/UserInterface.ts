@@ -1,6 +1,6 @@
 export interface UserInterface{
-    username: string;
     name: string;
     email:string;
     bio: string;
+    img: string;
 }
