@@ -1,0 +1,11 @@
+.buttons{
+    position: relative;
+    left: 1130px;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    vertical-align:middle;
+    margin: auto;
+}
