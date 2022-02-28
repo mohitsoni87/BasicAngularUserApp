@@ -3,7 +3,6 @@ import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInterface } from '../model/UserInterface';
-import { JsonService } from '../services/json.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class RegisterUserComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private registerService: JsonService,
     private userService: UserService
     ) { }
 
@@ -41,6 +39,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
 
+  //Register the User
   registerUser():void{
 
     //Binding the form
@@ -52,13 +51,18 @@ export class RegisterUserComponent implements OnInit {
       return ;
     }
 
-    this.registerService.registerUser(userObject).subscribe({
+    this.userService.registerUser().subscribe({
       next:()=>{
-        //Once registered, clear the form and redirect to the home page
+        //Once registered, clear the form and redirect to the Profile page
+        alert("Saving user: " + this.userForm.value.name + ". Press OK to submit.");
         this.userForm.reset();
         this.userService.changeStatus(true);
+
+        //Once registered, have the user logged in
         this.userService.login(userObject);
-        this.router.navigate(['profile', userObject.username]);
+
+        //Once logged in, have the user redirected to the profile page
+        this.router.navigate(['profile']);
       },
       error:(err)=>{
         this.errorMessage=err;
@@ -69,7 +73,6 @@ export class RegisterUserComponent implements OnInit {
 
   //assign form controls
   get formControl(){
-    console.log(this.userForm.controls);
     return this.userForm.controls;
   }
 

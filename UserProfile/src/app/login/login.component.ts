@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInterface } from '../model/UserInterface';
 import { UserService } from '../services/user.service';
-import { JsonService } from '../services/json.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
   displayResult = false;
   userProfile : UserInterface[] = [];
 
-  constructor(private fetchUser: JsonService,
+  constructor(
     private userService: UserService,
     private router: Router) { }
 
@@ -27,14 +26,15 @@ export class LoginComponent implements OnInit {
 
   //Fetching User from the JSON Server
   login=(username: string)=>{
-    this.fetchUser.findUser(username).subscribe({
+    this.userService.findUser().subscribe({
       next:(userObject: UserInterface)=>{
+        console.log(userObject);
         if(userObject != null){
           this.displayResult = true;
           this.userProfile = [userObject];
           this.userService.login(userObject);
           this.userService.changeStatus(true);
-          this.router.navigate(['profile', userObject.username]);
+          this.router.navigate(['profile']);
         }
       },
       error:err=>{

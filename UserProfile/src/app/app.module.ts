@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     ProfileViewComponent,
     RegisterUserComponent,
-    LoginComponent
+    LoginComponent,
+    HomePageComponent
   ],
   imports: [
     MatInputModule,
